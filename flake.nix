@@ -63,7 +63,7 @@
 
     src = lib.fileset.toSource {
       root = ./.;
-      fileset = lib.fileset.unions ([(craneLib.fileset.commonCargoSources ./.)]);
+      fileset = lib.fileset.unions [(craneLib.fileset.commonCargoSources ./.)];
     };
 
     inherit (craneLib.crateNameFromCargoToml {inherit src;}) pname version;
@@ -72,7 +72,15 @@
       inherit pname version src cargoArtifacts;
       strictDeps = true;
       doCheck = false;
-      buildInputs = with pkgs; [openssl];
+      buildInputs = with pkgs; [
+        openssl
+        gtk4-layer-shell
+        gdk-pixbuf
+        cairo
+        pango
+        rubyPackages.gdk3
+        gtk4
+      ];
       nativeBuildInputs = with pkgs; [pkg-config];
     };
 
@@ -146,6 +154,12 @@
               cargo-llvm-cov
               cargo-tarpaulin
               cargo-nextest
+              gtk4-layer-shell
+              gdk-pixbuf
+              cairo
+              pango
+              rubyPackages.gdk3
+              gtk4
             ];
             nativeBuildInputs = with pkgs; [
               pkg-config
