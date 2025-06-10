@@ -1,0 +1,7 @@
+**/target
+.direnv
+result
+w3mem_logs
+warcraft_api.json
+observer_api.json
+observer_config.json

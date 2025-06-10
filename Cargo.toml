@@ -1,0 +1,9 @@
+[package]
+name = "hyprlayer"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+authors = ["Clemens Horn <me@clemenshorn.com>"]
+
+[dependencies]
+hyprland = "0.3.13"
